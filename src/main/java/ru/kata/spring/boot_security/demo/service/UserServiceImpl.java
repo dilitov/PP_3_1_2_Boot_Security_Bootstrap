@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     @Transactional
     public User getUserById(int id) {
+
         return userDao.getUserById(id);
     }
 

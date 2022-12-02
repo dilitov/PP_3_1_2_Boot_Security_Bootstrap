@@ -7,6 +7,7 @@ import ru.kata.spring.boot_security.demo.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -49,7 +50,10 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user, String[] roles) {
         user.setRoles(rolesDao.getRoles(roles));
-        user.setPassword(encoder.encode(user.getPassword()));
+        System.out.println(1);
+        if (!Objects.equals(user.getPassword(), entityManager.find(User.class, user.getId()).getPassword())) {
+            user.setPassword(encoder.encode(user.getPassword()));
+        }
         entityManager.merge(user);
     }
 

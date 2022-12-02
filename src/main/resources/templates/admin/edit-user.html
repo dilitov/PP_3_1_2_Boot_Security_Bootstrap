@@ -32,7 +32,7 @@
                     <input id="username" th:field="*{userName}" type="text">
                     <br><br>
                     <label for="password">Enter Password</label>
-                    <input id="password" th:field="*{password}" type="password">
+                    <input id="password" th:name="*{password}" type="password">
                     <br><br>
                     <label>Is Active:</label>
                     <input th:field="*{active}" type="radio" value="true"/>Yes
